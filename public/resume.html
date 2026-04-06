@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aarni Handoo | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%); }
+    .section-title { position: relative; display: inline-block; }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background: #22d3ee;
+      bottom: -4px;
+      left: 0;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-200">
+
+  <header class="hero-bg py-20">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+      <div class="flex-1 text-center md:text-left">
+        <h1 class="text-5xl md:text-7xl font-bold mb-2">AARNI HANDOO</h1>
+        <p class="text-2xl text-cyan-400 font-medium">Computer Science Student • B.Tech VIT Vellore</p>
+        <p class="mt-4 text-lg text-slate-400 max-w-md mx-auto md:mx-0">
+          Passionate about Computer Vision, Python, and building impactful applications.
+        </p>
+
+        <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-8">
+          <a href="mailto:messageaarni@gmail.com" class="bg-white text-slate-900 px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-cyan-400 transition">
+            <i class="fas fa-envelope"></i> Email Me
+          </a>
+          <a href="https://linkedin.com/in/aarni-handoo" target="_blank" class="border border-cyan-400 text-cyan-400 px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-cyan-400 hover:text-slate-900 transition">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="tel:+918368898024" class="border border-slate-400 px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-slate-800 transition">
+            <i class="fas fa-phone"></i> +91 8368898024
+          </a>
+        </div>
+
+        <div class="mt-10 text-sm text-slate-400 flex justify-center md:justify-start gap-8">
+          <div>Vellore, Tamil Nadu</div>
+          <div>CGPA: 9.36</div>
+        </div>
+      </div>
+
+      <div class="w-64 h-64 md:w-72 md:h-72 rounded-3xl overflow-hidden border-4 border-cyan-400 shadow-2xl flex-shrink-0">
+        <img src="public\AARNI HANDOO 11-E.jpg" alt="Aarni Handoo" class="w-full h-full object-cover">
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-5xl mx-auto px-6">
+
+    <section class="py-16">
+      <h2 class="section-title text-4xl font-bold mb-6">About Me</h2>
+      <p class="text-lg leading-relaxed text-slate-300">
+        Computer Science undergraduate with a strong programming foundation, experienced in Python-based 
+        computer vision and data-driven applications. Passionate about solving real-world problems through 
+        technology and demonstrating leadership through technical and student roles.
+      </p>
+    </section>
+
+    <section class="py-16 bg-slate-900 rounded-3xl px-8 mb-12">
+      <h2 class="section-title text-4xl font-bold mb-8">Education</h2>
+      <div class="space-y-8">
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="md:w-1/3">
+            <div class="text-cyan-400 font-semibold">Vellore Institute of Technology, Vellore</div>
+            <div class="text-slate-400 text-sm">July 2024 – Present</div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold">Bachelor of Technology (B.Tech.) in Computer Science</h3>
+            <p class="text-emerald-400 font-medium">CGPA: 9.36</p>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="md:w-1/3">
+            <div class="text-cyan-400 font-semibold">Amity International School, Mayur Vihar</div>
+            <div class="text-slate-400 text-sm">April 2023 – May 2024</div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold">XIIth (Science) • 87.2%</h3>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="md:w-1/3">
+            <div class="text-cyan-400 font-semibold">Amity International School, Noida</div>
+            <div class="text-slate-400 text-sm">April 2021 – May 2022</div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold">Xth • 93.4%</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <h2 class="section-title text-4xl font-bold mb-8">Internship Experience</h2>
+      <div class="bg-slate-900 rounded-3xl p-8">
+        <div class="flex justify-between items-start">
+          <div>
+            <h3 class="text-xl font-semibold">Software Engineering Intern</h3>
+            <p class="text-cyan-400">Kaamet Consulting Pvt. Ltd, Noida</p>
+          </div>
+          <div class="text-sm text-slate-400 text-right">June 2025 – July 2025</div>
+        </div>
+        <ul class="mt-6 space-y-3 text-slate-300">
+          <li class="flex gap-3"><span class="text-cyan-400">•</span> Assisted in refining Python-based automation scripts for internal data entry workflows.</li>
+          <li class="flex gap-3"><span class="text-cyan-400">•</span> Executed basic SQL queries for database maintenance and data retrieval.</li>
+          <li class="flex gap-3"><span class="text-cyan-400">•</span> Collaborated with senior developers on debugging and optimization tasks.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-900 rounded-3xl px-8 mb-12">
+      <h2 class="section-title text-4xl font-bold mb-10">Featured Projects</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-slate-800 rounded-2xl p-6 hover:scale-105 transition">
+          <div class="text-cyan-400 mb-2">Computer Vision • Python</div>
+          <h3 class="text-2xl font-semibold mb-3">Driver Safety & Behavioral Monitoring System</h3>
+          <p class="text-slate-400 leading-relaxed">
+            Real-time computer vision application that detects driver fatigue using eye-closure analysis 
+            and mobile phone usage. Built web dashboard with HTML, CSS & JavaScript for live metrics.
+          </p>
+          <div class="mt-6 text-sm text-slate-400">Technologies: Python, OpenCV, HTML, CSS, JavaScript</div>
+        </div>
+
+        <div class="bg-slate-800 rounded-2xl p-6 hover:scale-105 transition">
+          <div class="text-cyan-400 mb-2">Python • Data Visualization</div>
+          <h3 class="text-2xl font-semibold mb-3">NGO Management & Data Visualization System</h3>
+          <p class="text-slate-400 leading-relaxed">
+            Desktop application for donor management and resource tracking. Integrated Matplotlib for 
+            real-time analytics and powerful search/filter features.
+          </p>
+          <div class="mt-6 text-sm text-slate-400">Technologies: Python, Tkinter, Matplotlib, CSV</div>
+        </div>
+
+        <div class="bg-slate-800 rounded-2xl p-6 hover:scale-105 transition">
+          <div class="text-cyan-400 mb-2">Your Category • Technology</div>
+          <h3 class="text-2xl font-semibold mb-3">Your Third Project Title</h3>
+          <p class="text-slate-400 leading-relaxed">
+            Write a short description of your new project here (2-3 lines).
+          </p>
+          <div class="mt-6 text-sm text-slate-400">Technologies: List your technologies here</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <h2 class="section-title text-4xl font-bold mb-8">Technical Skills</h2>
+      <div class="flex flex-wrap gap-3">
+        <span class="px-6 py-3 bg-slate-800 text-slate-200 rounded-full text-sm font-medium">Python</span>
+        <span class="px-6 py-3 bg-slate-800 text-slate-200 rounded-full text-sm font-medium">Java</span>
+        <span class="px-6 py-3 bg-slate-800 text-slate-200 rounded-full text-sm font-medium">C / C++</span>
+        <span class="px-6 py-3 bg-slate-800 text-slate-200 rounded-full text-sm font-medium">HTML</span>
+        <span class="px-6 py-3 bg-slate-800 text-slate-200 rounded-full text-sm font-medium">CSS</span>
+        <span class="px-6 py-3 bg-slate-800 text-slate-200 rounded-full text-sm font-medium">JavaScript</span>
+        <span class="px-6 py-3 bg-slate-800 text-slate-200 rounded-full text-sm font-medium">SQL</span>
+        <span class="px-6 py-3 bg-slate-800 text-slate-200 rounded-full text-sm font-medium">Git</span>
+        <span class="px-6 py-3 bg-slate-800 text-slate-200 rounded-full text-sm font-medium">Microsoft Excel</span>
+        <span class="px-6 py-3 bg-slate-800 text-slate-200 rounded-full text-sm font-medium">Computer Vision</span>
+        <span class="px-6 py-3 bg-slate-800 text-slate-200 rounded-full text-sm font-medium">Matplotlib</span>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <h2 class="section-title text-4xl font-bold mb-8">Certifications</h2>
+      <div class="flex flex-wrap gap-6">
+        <div class="bg-slate-900 px-6 py-4 rounded-2xl flex-1 min-w-[280px]">
+          Python Essentials Level 1 & 2 – Cisco Networking Academy
+        </div>
+        <div class="bg-slate-900 px-6 py-4 rounded-2xl flex-1 min-w-[280px]">
+          Software Engineering Intern – HackerRank
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="bg-slate-900 py-10 text-center text-slate-400 text-sm">
+    <p>© 2026 Aarni Handoo • Built with ❤️ using HTML & CSS</p>
+    <p class="mt-2">Vellore, Tamil Nadu | messageaarni@gmail.com</p>
+  </footer>
+
+</body>
+</html>
