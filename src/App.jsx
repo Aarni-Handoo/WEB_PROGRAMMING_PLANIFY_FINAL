@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import HomePage from "./components/HomePage";
-import SetupScreen from "./components/SetupScreen";
-import PlannerScreen from "./components/PlannerScreen";
-import AddTaskModal from "./components/AddTaskModal";
-import ShiftModal from "./components/ShiftModal";
+import HomePageAarniHandoo24BCT0256 from "./components/HomePage";
+import SetupScreenAarniHandoo24BCT0256 from "./components/SetupScreen";
+import PlannerScreenAarniHandoo24BCT0256 from "./components/PlannerScreen";
+import AddTaskModalAarniHandoo24BCT0256 from "./components/AddTaskModal";
+import ShiftModalAarniHandoo24BCT0256 from "./components/ShiftModal";
 import { S } from "./styles";
 import {
   today, addDays, diffDays, uid, generateCode,
@@ -11,39 +11,38 @@ import {
   FRONTEND_KEYWORDS, BACKEND_KEYWORDS, DB_KEYWORDS,
   DESIGN_KEYWORDS, DEVOPS_KEYWORDS,
 } from "./utils/dateHelpers";
- 
-// ─── Storage helpers ─────────────────────────────────────────────────────────
-const STORAGE_PREFIX = "planify_project_";
- 
-const saveProject = (code, data) => {
+
+const STORAGE_PREFIX_AARNI_HANDOO_24BCT0256 = "aarniHandooPlanify24BCT0256_";
+const STUDENT_NAME_AARNI_HANDOO = "AARNI HANDOO";
+const REG_NO_24BCT0256 = "24BCT0256";
+
+const saveAarniHandooProject24BCT0256 = (code, data) => {
   try {
-    localStorage.setItem(STORAGE_PREFIX + code, JSON.stringify({ ...data, savedAt: Date.now() }));
+    localStorage.setItem(STORAGE_PREFIX_AARNI_HANDOO_24BCT0256 + code, JSON.stringify({ ...data, savedAt: Date.now() }));
   } catch (e) {
     console.warn("Storage save failed", e);
   }
 };
- 
-const loadProject = (code) => {
+
+const loadAarniHandooProject24BCT0256 = (code) => {
   try {
-    const raw = localStorage.getItem(STORAGE_PREFIX + code.trim().toUpperCase());
+    const raw = localStorage.getItem(STORAGE_PREFIX_AARNI_HANDOO_24BCT0256 + code.trim().toUpperCase());
     return raw ? JSON.parse(raw) : null;
   } catch {
     return null;
   }
 };
- 
-// ─── Sub-components ───────────────────────────────────────────────────────────
-function Spinner() {
-  return <span className="spin">⟳</span>;
+
+function SpinnerAarniHandoo24BCT0256() {
+  return <span className="spinAarniHandoo24BCT0256">⟳</span>;
 }
- 
-function Toast({ msg, type }) {
+
+function ToastAarniHandoo24BCT0256({ msg, type }) {
   const colors = { error: "#ef4444", warn: "#f59e0b", success: "#10b981", info: "#6366f1" };
   return <div style={{ ...S.toast, background: colors[type] || "#6366f1" }}>{msg}</div>;
 }
- 
-// ─── Main App ─────────────────────────────────────────────────────────────────
-export default function App() {
+
+export default function AppAarniHandoo24BCT0256() {
   const [screen, setScreen] = useState("home");
   const [projectCode, setProjectCode] = useState("");
   const [project, setProject] = useState({
@@ -57,23 +56,20 @@ export default function App() {
   const [shiftModal, setShiftModal] = useState(null);
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [editingTask, setEditingTask] = useState(null);
- 
-  // Always sync start date to real today on mount
+
   useEffect(() => {
     setProject(prev => ({ ...prev, startDate: today() }));
   }, []);
- 
-  // Auto-save whenever tasks / project / members change (while in planner)
+
   const autoSaveRef = useRef(null);
   useEffect(() => {
     if (screen !== "planner" || !projectCode) return;
     clearTimeout(autoSaveRef.current);
     autoSaveRef.current = setTimeout(() => {
-      saveProject(projectCode, { project, members, tasks });
+      saveAarniHandooProject24BCT0256(projectCode, { project, members, tasks });
     }, 800);
   }, [tasks, project, members, screen, projectCode]);
- 
-  // Reminders
+
   useEffect(() => {
     if (!tasks.length) return;
     const todayStr = today();
@@ -85,47 +81,44 @@ export default function App() {
       if (diff < 0)  toast(`⛔ "${t.title}" is OVERDUE!`, "error");
     });
   }, [tasks.map(t => t.id).join()]);
- 
+
   const toast = (msg, type = "info") => {
     setNotification({ msg, type });
     setTimeout(() => setNotification(null), 4500);
   };
- 
-  // ── Create new project ──
-  const startPlanner = async () => {
+
+  const startAarniHandooPlanner24BCT0256 = async () => {
     if (!project.name || !project.startDate || !project.deadline)
       return toast("Fill project name, start date & deadline", "error");
     if (members.some(m => !m.name))
       return toast("All members need a name", "error");
- 
+
     setLoading(true);
     setLoadMsg("Creating your project space...");
     await new Promise(r => setTimeout(r, 700));
- 
-    const code = generateCode();          // e.g. "K7X-4M2"
+
+    const code = generateCode();
     setProjectCode(code);
     setTasks([]);
- 
-    // Persist immediately so others can join right away
-    saveProject(code, { project, members, tasks: [] });
- 
+
+    saveAarniHandooProject24BCT0256(code, { project, members, tasks: [] });
+
     setScreen("planner");
     setLoading(false);
     toast(`✅ Project created! Your code: ${code}`, "success");
   };
- 
-  // ── Join existing project ──
-  const joinProject = async (code) => {
+
+  const joinAarniHandooProject24BCT0256 = async (code) => {
     setLoading(true);
     setLoadMsg("Looking up project...");
     await new Promise(r => setTimeout(r, 600));
- 
-    const data = loadProject(code);
+
+    const data = loadAarniHandooProject24BCT0256(code);
     if (!data) {
       setLoading(false);
       return toast("❌ No project found with that code. Check and try again.", "error");
     }
- 
+
     setProject(data.project);
     setMembers(data.members);
     setTasks(data.tasks || []);
@@ -134,12 +127,11 @@ export default function App() {
     setLoading(false);
     toast(`✅ Joined project: ${data.project.name}`, "success");
   };
- 
-  // ── Smart assignee ──
+
   const getAssignees = (role) => {
     const memberList = members.filter(m => m.name);
     if (!memberList.length || role === "team") return ["Team"];
- 
+
     let matched = [];
     if (role === "frontend") {
       matched = memberList.filter(m =>
@@ -160,20 +152,19 @@ export default function App() {
       matched = memberList.filter(m =>
         matchesKeywords(m.skills, FRONTEND_KEYWORDS) || matchesKeywords(m.skills, BACKEND_KEYWORDS));
     }
- 
+
     return matched.length ? matched.map(m => m.name) : ["Team"];
   };
- 
-  // ── Suggest tasks ──
-  const recommendTasks = async () => {
+
+  const recommendAarniHandooTasks24BCT0256 = async () => {
     setLoading(true);
     setLoadMsg("Building your task roadmap...");
     await new Promise(r => setTimeout(r, 900));
- 
+
     const start = project.startDate;
     const end = project.deadline;
     const totalDays = diffDays(end, start);
- 
+
     const phases = [
       { title: "Project Kickoff Meeting",          role: "team",      pctStart: 0,   pctEnd: 3,   priority: "HIGH",   desc: "Align the team on goals, scope, timeline, and key deliverables." },
       { title: "Requirements Gathering",           role: "team",      pctStart: 2,   pctEnd: 10,  priority: "HIGH",   desc: "Collect user stories, business requirements, and define acceptance criteria." },
@@ -193,7 +184,7 @@ export default function App() {
       { title: "Production Deployment",            role: "devops",    pctStart: 95,  pctEnd: 98,  priority: "HIGH",   desc: "Release to production, monitor logs, configure alerts and rollback plan." },
       { title: "Documentation & Handover",         role: "team",      pctStart: 97,  pctEnd: 100, priority: "LOW",    desc: "Write user guides, API docs, internal wiki, and complete project handover." },
     ];
- 
+
     const newTasks = phases.map(p => {
       const taskStart = addDays(start, Math.round(totalDays * p.pctStart / 100));
       const taskDue   = addDays(start, Math.min(Math.round(totalDays * p.pctEnd / 100), totalDays));
@@ -205,23 +196,22 @@ export default function App() {
         dependencies: [], completed: false, deleted: false,
       };
     });
- 
+
     setTasks(prev => [...prev, ...newTasks]);
     setLoading(false);
-    toast(`✅ Added ${newTasks.length} tasks in logical sequence!`, "success");
+    toast(`✅ Added ${newTasks.length} tasks`, "success");
   };
- 
-  // ── Task actions ──
+
   const toggleComplete = (id) => {
     setTasks(prev => prev.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
     toast("Task status updated", "success");
   };
- 
+
   const deleteTask = (id) => {
     setTasks(prev => prev.map(t => t.id === id ? { ...t, deleted: true } : t));
     toast("🗑️ Task removed.", "info");
   };
- 
+
   const shiftTask = (taskId, newDate) => {
     setTasks(prev => {
       const task = prev.find(t => t.id === taskId);
@@ -236,7 +226,7 @@ export default function App() {
     setShiftModal(null);
     toast("📅 Deadline shifted.", "success");
   };
- 
+
   const handleSaveTask = (taskData) => {
     if (editingTask) {
       setTasks(prev => prev.map(t =>
@@ -249,102 +239,100 @@ export default function App() {
     setAddModalOpen(false);
     setEditingTask(null);
   };
- 
-  const handleReset = () => {
+
+  const handleAarniReset24BCT0256 = () => {
     setScreen("home");
     setTasks([]);
     setProjectCode("");
     setProject({ name: "", startDate: today(), deadline: "", description: "", notes: "" });
     setMembers([{ id: uid(), name: "", skills: "" }]);
   };
- 
-    // ── Delete entire project and its data ─────────────────────────────────────
-  const deleteProject = () => {
+
+  const deleteAarniHandooProject24BCT0256 = () => {
     if (!projectCode) return;
+    if (!window.confirm(`🗑️ Delete project "${project.name}" permanently?\n\nThis cannot be undone.`)) return;
 
-    if (!window.confirm(`🗑️ Delete project "${project.name}" permanently?\n\nThis cannot be undone.`)) {
-      return;
-    }
-
-    // Remove from localStorage
     try {
-      localStorage.removeItem(STORAGE_PREFIX + projectCode);
+      localStorage.removeItem(STORAGE_PREFIX_AARNI_HANDOO_24BCT0256 + projectCode);
     } catch (e) {}
 
-    // Reset everything
     setProjectCode("");
     setProject({ name: "", startDate: today(), deadline: "", description: "", notes: "" });
     setMembers([{ id: uid(), name: "", skills: "" }]);
     setTasks([]);
     setScreen("home");
 
-    toast("🗑️ Project deleted permanently.", "error");
+    toast(`🗑️ Project deleted permanently`, "error");
   };
 
-
-  // ── Derived ──
   const activeTasks = tasks.filter(t => !t.deleted);
   const done = activeTasks.filter(t => t.completed).length;
   const pct = activeTasks.length ? Math.round((done / activeTasks.length) * 100) : 0;
   const todayStr = today();
   const deadlinePct = (() => {
     const onTime = activeTasks.filter(t => t.completed && t.dueDate >= todayStr).length;
-    const totalC  = activeTasks.filter(t => t.completed).length;
+    const totalC = activeTasks.filter(t => t.completed).length;
     return totalC ? Math.round((onTime / totalC) * 100) : 100;
   })();
- 
+
   return (
-    <div style={S.root}>
-      {notification && <Toast msg={notification.msg} type={notification.type} />}
- 
+    <div id={`planify-root-AARNI_HANDOO_24BCT0256`} style={S.root}>
+      {notification && <ToastAarniHandoo24BCT0256 msg={notification.msg} type={notification.type} />}
+
       {screen === "home" && (
-        <HomePage
+        <HomePageAarniHandoo24BCT0256
           onNewProject={() => setScreen("setup")}
-          onJoinProject={joinProject}
+          onJoinProject={joinAarniHandooProject24BCT0256}
           loading={loading}
           loadMsg={loadMsg}
         />
       )}
- 
+
       {screen === "setup" && (
-        <SetupScreen
+        <SetupScreenAarniHandoo24BCT0256
           project={project} setProject={setProject}
           members={members} setMembers={setMembers}
-          onStart={startPlanner} onBack={() => setScreen("home")}
+          onStart={startAarniHandooPlanner24BCT0256} onBack={() => setScreen("home")}
           loading={loading} loadMsg={loadMsg}
         />
       )}
- 
+
       {screen === "planner" && (
-        <PlannerScreen
-          project={project} tasks={activeTasks} members={members}
-          pct={pct} deadlinePct={deadlinePct}
+        <PlannerScreenAarniHandoo24BCT0256
+          project={project} 
+          tasks={activeTasks} 
+          members={members}
+          pct={pct} 
+          deadlinePct={deadlinePct}
           projectCode={projectCode}
-          onToggleComplete={toggleComplete} onDelete={deleteTask}
+          onToggleComplete={toggleComplete} 
+          onDelete={deleteTask}
           onShift={id => {
             const t = activeTasks.find(t => t.id === id);
             setShiftModal({ taskId: id, newDate: t?.dueDate || today() });
           }}
           onAddTask={() => { setEditingTask(null); setAddModalOpen(true); }}
           onEditTask={t => { setEditingTask(t); setAddModalOpen(true); }}
-          onRecommend={recommendTasks}
-          onReset={handleReset}
-          onDeleteProject={deleteProject}
+          onRecommend={recommendAarniHandooTasks24BCT0256}
+          onReset={handleAarniReset24BCT0256}
+          onDeleteProject={deleteAarniHandooProject24BCT0256}
+          onUpdateNotes={newNotes => setProject(prev => ({ ...prev, notes: newNotes }))}
           loading={loading}
         />
       )}
- 
+
       {shiftModal && (
-        <ShiftModal
+        <ShiftModalAarniHandoo24BCT0256
           task={tasks.find(t => t.id === shiftModal.taskId)}
           onConfirm={newDate => shiftTask(shiftModal.taskId, newDate)}
           onClose={() => setShiftModal(null)}
         />
       )}
- 
+
       {addModalOpen && (
-        <AddTaskModal
-          taskToEdit={editingTask} members={members}
+        <AddTaskModalAarniHandoo24BCT0256
+          taskToEdit={editingTask} 
+          members={members}
           projectDeadline={project.deadline}
           onSave={handleSaveTask}
           onClose={() => { setAddModalOpen(false); setEditingTask(null); }}

@@ -1,14 +1,17 @@
 import { S } from "../styles";
 import { today, uid } from "../utils/dateHelpers";
 
-function Spinner() {
+const STUDENT_NAME_AARNI_HANDOO = "AARNI HANDOO";
+const REG_NO_24BCT0256 = "24BCT0256";
+
+function SpinnerAarniHandoo24BCT0256() {
   return <span className="spin">⟳</span>;
 }
 
-const SetupScreen = ({ project, setProject, members, setMembers, onStart, onBack, loading, loadMsg }) => {
-  const addMember = () => setMembers(p => [...p, { id: uid(), name: "", skills: "" }]);
-  const removeMember = id => setMembers(p => p.filter(m => m.id !== id));
-  const updateMember = (id, field, val) => setMembers(p => p.map(m => m.id === id ? { ...m, [field]: val } : m));
+const SetupScreenAarniHandoo24BCT0256 = ({ project, setProject, members, setMembers, onStart, onBack, loading, loadMsg }) => {
+  const addMemberAarniHandoo24BCT0256 = () => setMembers(p => [...p, { id: uid(), name: "", skills: "" }]);
+  const removeMemberAarniHandoo24BCT0256 = id => setMembers(p => p.filter(m => m.id !== id));
+  const updateMemberAarniHandoo24BCT0256 = (id, field, val) => setMembers(p => p.map(m => m.id === id ? { ...m, [field]: val } : m));
 
  return (
     <div style={S.setupWrap}>
@@ -50,25 +53,25 @@ const SetupScreen = ({ project, setProject, members, setMembers, onStart, onBack
         <div style={S.section}>
           <div style={S.memberHeader}>
             <label style={S.label}>Team Members</label>
-            <button style={S.addBtn} onClick={addMember} className="pp-add-btn">+ Add Member</button>
+            <button style={S.addBtn} onClick={addMemberAarniHandoo24BCT0256} className="pp-add-btn">+ Add Member</button>
           </div>
           <div style={S.skillHint}>💡 Skills like <em>React, Figma, Node, Backend</em> help auto-assign tasks correctly.</div>
           {members.map((m, i) => (
             <div key={m.id} style={S.memberRow}>
               <span style={S.memberIdx}>{i + 1}</span>
-              <input style={{ ...S.input, flex: 1 }} placeholder="Name" value={m.name} onChange={e => updateMember(m.id, "name", e.target.value)} className="pp-input" />
-              <input style={{ ...S.input, flex: 2 }} placeholder="Skills (React, Figma, Node, Backend…)" value={m.skills} onChange={e => updateMember(m.id, "skills", e.target.value)} className="pp-input" />
-              {members.length > 1 && <button style={S.removeBtn} onClick={() => removeMember(m.id)} className="pp-remove-btn">✕</button>}
+              <input style={{ ...S.input, flex: 1 }} placeholder="Name" value={m.name} onChange={e => updateMemberAarniHandoo24BCT0256(m.id, "name", e.target.value)} className="pp-input" />
+              <input style={{ ...S.input, flex: 2 }} placeholder="Skills (React, Figma, Node, Backend…)" value={m.skills} onChange={e => updateMemberAarniHandoo24BCT0256(m.id, "skills", e.target.value)} className="pp-input" />
+              {members.length > 1 && <button style={S.removeBtn} onClick={() => removeMemberAarniHandoo24BCT0256(m.id)} className="pp-remove-btn">✕</button>}
             </div>
           ))}
         </div>
 
         <button style={S.generateBtn} onClick={onStart} disabled={loading} className="pp-launch-btn">
-          {loading ? <span style={S.loadRow}><Spinner /> {loadMsg}</span> : "Launch Planner 🧠"}
+          {loading ? <span style={S.loadRow}><SpinnerAarniHandoo24BCT0256 /> {loadMsg}</span> : "Launch Planner 🧠"}
         </button>
       </div>
     </div>
   );
 };
 
-export default SetupScreen;
+export default SetupScreenAarniHandoo24BCT0256;

@@ -2,7 +2,10 @@ import { useState } from "react";
 import { HS } from "../styles";
 import { priorityColor } from "../utils/dateHelpers";
 
-const HomePage = ({ onNewProject, onJoinProject, loading, loadMsg }) => {
+const STUDENT_NAME_AARNI_HANDOO = "AARNI HANDOO";
+const REG_NO_24BCT0256 = "24BCT0256";
+
+const HomePageAarniHandoo24BCT0256 = ({ onNewProject, onJoinProject, loading, loadMsg }) => {
   const [joinCode, setJoinCode] = useState("");
   const [joinError, setJoinError] = useState("");
   const [joinFocused, setJoinFocused] = useState(false);
@@ -21,7 +24,7 @@ const HomePage = ({ onNewProject, onJoinProject, loading, loadMsg }) => {
     { n: "04", label: "Share & Collaborate", desc: "Share your unique code so teammates can join." },
   ];
 
-  const handleJoin = () => {
+  const handleJoinAarniHandoo24BCT0256 = () => {
     const trimmed = joinCode.trim();
     if (!trimmed) { setJoinError("Please enter a project code."); return; }
     if (trimmed.length < 5)  { setJoinError("Codes are at least 5 characters."); return; }
@@ -29,13 +32,12 @@ const HomePage = ({ onNewProject, onJoinProject, loading, loadMsg }) => {
     onJoinProject(trimmed);
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") handleJoin();
+  const handleKeyDownAarniHandoo24BCT0256 = (e) => {
+    if (e.key === "Enter") handleJoinAarniHandoo24BCT0256();
   };
 
   return (
     <div style={HS.page}>
-      {/* ── Nav ─────────────────────────────────────────────── */}
       <nav style={HS.nav}>
         <div style={HS.logo}>
           <span style={HS.logoMark}>◈</span>
@@ -44,8 +46,6 @@ const HomePage = ({ onNewProject, onJoinProject, loading, loadMsg }) => {
         <div style={HS.navLinks}>
           <a href="#features" style={HS.navLink}> Features</a>
           <a href="#how"      style={HS.navLink}>How it works</a>
-          
-          {/* 🔥 NEW: My Resume PDF button (same styling as Features / How it works) */}
           <a 
             href="/resume.html"
             target="_blank"
@@ -60,7 +60,6 @@ const HomePage = ({ onNewProject, onJoinProject, loading, loadMsg }) => {
         </button>
       </nav>
 
-      {/* ── Hero ─────────────────────────────────────────────── */}
       <section style={HS.hero}>
         <div style={HS.heroTag} className="fade-up">Track Your Progress · Avoid Delays</div>
 
@@ -74,9 +73,7 @@ const HomePage = ({ onNewProject, onJoinProject, loading, loadMsg }) => {
           track your team's progress with beautiful dashboards, and collaborate via a shared project code.
         </p>
 
-        {/* ── Action cards ── */}
         <div style={HS.heroActions} className="fade-up delay-3">
-          {/* Plan a New Project */}
           <div style={HS.actionCard} className="action-card">
             <div style={HS.actionCardIcon}>🚀</div>
             <div style={HS.actionCardBody}>
@@ -93,14 +90,12 @@ const HomePage = ({ onNewProject, onJoinProject, loading, loadMsg }) => {
             </button>
           </div>
 
-          {/* Divider */}
           <div style={HS.orDivider}>
             <div style={HS.orLine} />
             <span style={HS.orText}>or</span>
             <div style={HS.orLine} />
           </div>
 
-          {/* Join a Project */}
           <div style={{ ...HS.actionCard, ...(joinFocused ? HS.actionCardFocused : {}) }} className="action-card">
             <div style={HS.actionCardIcon}>🔗</div>
             <div style={HS.actionCardBody}>
@@ -116,7 +111,7 @@ const HomePage = ({ onNewProject, onJoinProject, loading, loadMsg }) => {
                   placeholder="e.g.  K7X-4M2"
                   value={joinCode}
                   onChange={e => { setJoinCode(e.target.value.toUpperCase()); setJoinError(""); }}
-                  onKeyDown={handleKeyDown}
+                  onKeyDown={handleKeyDownAarniHandoo24BCT0256}
                   onFocus={() => setJoinFocused(true)}
                   onBlur={() => setJoinFocused(false)}
                   maxLength={10}
@@ -124,7 +119,7 @@ const HomePage = ({ onNewProject, onJoinProject, loading, loadMsg }) => {
                 />
                 <button
                   style={HS.joinBtn}
-                  onClick={handleJoin}
+                  onClick={handleJoinAarniHandoo24BCT0256}
                   disabled={loading}
                   className="hp-join-btn"
                 >
@@ -136,7 +131,6 @@ const HomePage = ({ onNewProject, onJoinProject, loading, loadMsg }) => {
           </div>
         </div>
 
-        {/* ── Hero preview card ── */}
         <div style={HS.heroCard} className="fade-up delay-4">
           <div style={HS.heroCardInner}>
             <div style={HS.heroCardHeader}>
@@ -171,7 +165,6 @@ const HomePage = ({ onNewProject, onJoinProject, loading, loadMsg }) => {
         </div>
       </section>
 
-      {/* ── Features ─────────────────────────────────────────── */}
       <section id="features" style={HS.section}>
         <div style={HS.sectionTag}>Features</div>
         <h2 style={HS.sectionTitle}>Everything your team needs</h2>
@@ -186,7 +179,6 @@ const HomePage = ({ onNewProject, onJoinProject, loading, loadMsg }) => {
         </div>
       </section>
 
-      {/* ── How it works ─────────────────────────────────────── */}
       <section id="how" style={{ ...HS.section, maxWidth: "1100px", margin: "60px auto 100px", background: "rgba(99,102,241,.04)", borderRadius: 24, width: "100%" }}>
         <div style={HS.sectionTag}>Process</div>
         <h2 style={HS.sectionTitle}>How it works</h2>
@@ -202,13 +194,12 @@ const HomePage = ({ onNewProject, onJoinProject, loading, loadMsg }) => {
         </div>
       </section>
 
-      {/* ── Footer ───────────────────────────────────────────── */}
       <footer style={HS.footer}>
         <span style={HS.logo}>
           <span style={HS.logoMark}>◈</span>
           <span style={HS.logoName}>Planify</span>
         </span>
-        <span style={{ color: "#94a3b8", fontSize: 13 }}>© 2026 Planify. All rights reserved.</span>
+        <span style={{ color: "#94a3b8", fontSize: 13 }}>© 2026 {STUDENT_NAME_AARNI_HANDOO} ({REG_NO_24BCT0256}). All rights reserved.</span>
       </footer>
     </div>
   );
@@ -216,4 +207,4 @@ const HomePage = ({ onNewProject, onJoinProject, loading, loadMsg }) => {
 
 const dot = (c) => ({ width: 10, height: 10, borderRadius: "50%", background: c, flexShrink: 0 });
 
-export default HomePage;
+export default HomePageAarniHandoo24BCT0256;

@@ -1,10 +1,8 @@
-// src/styles.js
- 
-// ─── Home Page styles ──────────────────────────────────────────────────────────
+const STUDENT_NAME_AARNI_HANDOO = "AARNI HANDOO";
+const REG_NO_24BCT0256 = "24BCT0256";
+
 export const HS = {
   page: { background: "#f0f4ff", minHeight: "100vh", fontFamily: "'Sora', sans-serif", color: "#1e293b", overflowX: "hidden" },
- 
-  // Nav
   nav: { display: "flex", alignItems: "center", justifyContent: "space-between", padding: "18px 40px", background: "rgba(255,255,255,.85)", backdropFilter: "blur(12px)", position: "sticky", top: 0, zIndex: 50, borderBottom: "1px solid rgba(99,102,241,.1)", boxShadow: "0 2px 20px rgba(99,102,241,.06)" },
   logo: { display: "flex", alignItems: "center", gap: 8 },
   logoMark: { fontSize: 22, color: "#4f46e5" },
@@ -12,17 +10,12 @@ export const HS = {
   navLinks: { display: "flex", gap: 32 },
   navLink: { color: "#64748b", textDecoration: "none", fontSize: 14, fontWeight: 600, transition: "color .2s" },
   navCta: { background: "#4f46e5", color: "#fff", border: "none", borderRadius: 50, padding: "10px 22px", fontSize: 14, fontWeight: 700, cursor: "pointer", transition: "all .2s" },
- 
-  // Hero
   hero: { maxWidth: 820, margin: "0 auto", padding: "80px 24px 40px", textAlign: "center" },
   heroTag: { display: "inline-block", background: "rgba(99,102,241,.1)", color: "#4f46e5", border: "1px solid rgba(99,102,241,.2)", borderRadius: 99, padding: "5px 16px", fontSize: 13, fontWeight: 700, marginBottom: 24, letterSpacing: .3 },
   heroTitle: { fontSize: 58, fontWeight: 900, lineHeight: 1.1, letterSpacing: -2, marginBottom: 20, color: "#0f172a" },
   heroAccent: { color: "#4f46e5" },
   heroSub: { fontSize: 17, color: "#64748b", maxWidth: 560, margin: "0 auto 40px", lineHeight: 1.75, fontWeight: 400 },
- 
-  // ── New: dual action cards ──────────────────────────────────────────────────
   heroActions: { display: "flex", alignItems: "stretch", gap: 0, maxWidth: 660, margin: "0 auto 56px", background: "#fff", borderRadius: 22, boxShadow: "0 8px 40px rgba(99,102,241,.13)", border: "1px solid rgba(99,102,241,.12)", overflow: "hidden" },
- 
   actionCard: { flex: 1, display: "flex", flexDirection: "column", gap: 10, padding: "28px 24px", transition: "background .2s" },
   actionCardFocused: { background: "rgba(99,102,241,.04)" },
   actionCardIcon: { fontSize: 30 },
@@ -30,20 +23,15 @@ export const HS = {
   actionCardTitle: { fontSize: 16, fontWeight: 800, color: "#0f172a", marginBottom: 4 },
   actionCardDesc: { fontSize: 13, color: "#64748b", lineHeight: 1.5, marginBottom: 14 },
   actionCardBtn: { background: "linear-gradient(135deg, #4f46e5, #6366f1)", color: "#fff", border: "none", borderRadius: 50, padding: "11px 22px", fontSize: 14, fontWeight: 700, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 8, boxShadow: "0 4px 16px rgba(79,70,229,.3)", width: "fit-content" },
- 
   orDivider: { display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 4px" },
   orLine: { flex: 1, width: 1, background: "rgba(99,102,241,.12)" },
   orText: { fontSize: 12, fontWeight: 700, color: "#94a3b8", padding: "10px 0", letterSpacing: .5 },
- 
   joinInputRow: { display: "flex", gap: 8, marginTop: 4 },
   joinInput: { flex: 1, background: "#f8fafc", border: "1.5px solid #e2e8f0", borderRadius: 10, color: "#1e293b", padding: "10px 14px", fontSize: 15, fontWeight: 700, outline: "none", letterSpacing: 2, fontFamily: "monospace", transition: "border .2s, box-shadow .2s" },
   joinBtn: { background: "#4f46e5", color: "#fff", border: "none", borderRadius: 10, padding: "10px 18px", fontSize: 14, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap" },
   joinError: { fontSize: 12, color: "#ef4444", fontWeight: 600, marginTop: 6 },
- 
   ctaArrow: { transition: "transform .2s", display: "inline-block" },
   heroSecondary: { background: "rgba(255,255,255,.8)", color: "#4f46e5", border: "2px solid rgba(99,102,241,.25)", borderRadius: 50, padding: "12px 26px", fontSize: 15, fontWeight: 700, cursor: "pointer", textDecoration: "none", display: "inline-flex", alignItems: "center" },
- 
-  // Hero preview card
   heroCard: { background: "#fff", borderRadius: 24, padding: 3, boxShadow: "0 24px 80px rgba(99,102,241,.18), 0 4px 16px rgba(0,0,0,.06)", maxWidth: 500, margin: "0 auto 80px", border: "1px solid rgba(99,102,241,.12)" },
   heroCardInner: { background: "linear-gradient(145deg, #fafbff, #f0f4ff)", borderRadius: 22, padding: "22px 24px" },
   heroCardHeader: { display: "flex", alignItems: "center", gap: 7, marginBottom: 18 },
@@ -59,35 +47,25 @@ export const HS = {
   heroTaskDot: { width: 8, height: 8, borderRadius: "50%", flexShrink: 0 },
   heroTaskLabel: { flex: 1, fontSize: 12, fontWeight: 600 },
   heroTaskBadge: { fontSize: 10, fontWeight: 800, letterSpacing: .4 },
- 
-  // Section layout
   section: { maxWidth: "1200px", margin: "0 auto 100px", padding: "0 24px", width: "100%" },
   sectionTag: { fontSize: 12, fontWeight: 800, color: "#4f46e5", letterSpacing: 2, textTransform: "uppercase", marginBottom: 12 },
   sectionTitle: { fontSize: 36, fontWeight: 900, letterSpacing: -1, color: "#0f172a", marginBottom: 20, textAlign: "center" },
- 
-  // Features
   featureGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 20 },
   featureCard: { background: "#fff", border: "1px solid rgba(99,102,241,.1)", borderRadius: 20, padding: "28px 24px", transition: "transform .2s, box-shadow .2s", cursor: "default" },
   featureIcon: { fontSize: 32, marginBottom: 14 },
   featureTitle: { fontSize: 16, fontWeight: 800, color: "#0f172a", marginBottom: 8 },
   featureDesc: { fontSize: 14, color: "#64748b", lineHeight: 1.6 },
- 
-  // Steps
   stepsRow: { display: "flex", gap: 30, flexWrap: "wrap", justifyContent: "center", padding: "50px 40px", margin: "0 auto", maxWidth: "1100px", width: "100%", background: "#f8faff", borderRadius: 24, boxShadow: "0 10px 30px rgba(99,102,241,.06)" },
   step: { flex: "1 1 180px", padding: "24px 20px", textAlign: "center", position: "relative" },
   stepNum: { fontSize: 36, fontWeight: 900, color: "rgba(99,102,241,.18)", marginBottom: 10 },
   stepLabel: { fontSize: 15, fontWeight: 800, color: "#1e293b", marginBottom: 6 },
   stepDesc: { fontSize: 13, color: "#64748b", lineHeight: 1.5 },
   stepArrow: { position: "absolute", top: "38%", right: -10, fontSize: 20, color: "rgba(99,102,241,.3)", fontWeight: 700 },
- 
   footer: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "24px 40px", borderTop: "1px solid rgba(99,102,241,.1)" },
 };
- 
-// ─── Planner / Setup styles ────────────────────────────────────────────────────
+
 export const S = {
   root: { minHeight: "100vh", background: "#f0f4ff", color: "#1e293b", fontFamily: "'Sora', sans-serif", position: "relative" },
- 
-  // Setup
   setupWrap: { display: "flex", justifyContent: "center", padding: "40px 16px 80px" },
   setupCard: { background: "#fff", border: "1px solid rgba(99,102,241,.12)", borderRadius: 24, padding: "44px 40px", width: "100%", maxWidth: 660, boxShadow: "0 8px 40px rgba(99,102,241,.1)" },
   backBtn: { background: "none", border: "none", color: "#4f46e5", cursor: "pointer", fontSize: 14, fontWeight: 700, padding: "0 0 20px", display: "block" },
@@ -110,20 +88,15 @@ export const S = {
   removeBtn: { background: "rgba(239,68,68,.08)", border: "1px solid rgba(239,68,68,.25)", color: "#ef4444", borderRadius: 7, padding: "8px 12px", cursor: "pointer", fontSize: 13 },
   generateBtn: { width: "100%", background: "linear-gradient(135deg, #4f46e5, #6366f1)", border: "none", borderRadius: 12, color: "#fff", fontSize: 16, fontWeight: 800, padding: "15px", cursor: "pointer", marginTop: 8, transition: "opacity .2s, transform .2s", boxShadow: "0 6px 24px rgba(79,70,229,.3)" },
   loadRow: { display: "flex", alignItems: "center", gap: 10, justifyContent: "center" },
- 
-  // Planner
   plannerWrap: { maxWidth: 940, margin: "0 auto", padding: "32px 16px 80px" },
   plannerHeader: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 28 },
   projectTitle: { fontSize: 28, fontWeight: 900, color: "#0f172a", margin: "4px 0" },
   projectDeadline: { color: "#64748b", fontSize: 14 },
   resetBtn: { background: "#fff", border: "1.5px solid #e2e8f0", color: "#64748b", borderRadius: 10, padding: "9px 18px", cursor: "pointer", fontSize: 13, fontWeight: 700, boxShadow: "0 1px 4px rgba(0,0,0,.04)" },
- 
-  // ── Project code badge (new) ──────────────────────────────────────────────
   codeBadge: { display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(79,70,229,.07)", border: "1.5px solid rgba(79,70,229,.2)", borderRadius: 10, padding: "8px 14px", cursor: "pointer", transition: "background .2s", userSelect: "none" },
   codeIcon: { fontSize: 14 },
   codeText: { fontFamily: "monospace", fontWeight: 800, fontSize: 16, color: "#4f46e5", letterSpacing: 2 },
   codeCopyHint: { fontSize: 11, color: "#94a3b8", fontWeight: 600, marginLeft: 2 },
- 
   statsRow: { display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 14, marginBottom: 22 },
   statCard: { background: "#fff", border: "1px solid #e2e8f0", borderRadius: 16, padding: "20px 16px", textAlign: "center", boxShadow: "0 2px 12px rgba(0,0,0,.04)", transition: "transform .2s" },
   statIcon: { fontSize: 22, marginBottom: 8 },

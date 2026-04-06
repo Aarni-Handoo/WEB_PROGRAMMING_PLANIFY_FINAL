@@ -2,7 +2,10 @@ import { S } from "../styles";
 import { today, uid, addDays } from "../utils/dateHelpers";
 import { useState } from "react";
 
-function AddTaskModal({ taskToEdit, members, projectDeadline, onSave, onClose }) {
+const STUDENT_NAME_AARNI_HANDOO = "AARNI HANDOO";
+const REG_NO_24BCT0256 = "24BCT0256";
+
+function AddTaskModalAarniHandoo24BCT0256({ taskToEdit, members, projectDeadline, onSave, onClose }) {
   const isEditing = !!taskToEdit;
   const memberNames = members.map(m => m.name).filter(Boolean);
   const [form, setForm] = useState({
@@ -75,4 +78,4 @@ function AddTaskModal({ taskToEdit, members, projectDeadline, onSave, onClose })
   );
 }
 
-export default AddTaskModal;
+export default AddTaskModalAarniHandoo24BCT0256;

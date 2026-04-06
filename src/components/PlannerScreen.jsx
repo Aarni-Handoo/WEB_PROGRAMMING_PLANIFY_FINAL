@@ -1,53 +1,54 @@
 import { useState } from "react";
-import TaskCard from "./TaskCard";
-import ProgressBar from "./ProgressBar";
+import TaskCardAarniHandoo24BCT0256 from "./TaskCard";
+import ProgressBarAarniHandoo24BCT0256 from "./ProgressBar";
 import { S } from "../styles";
 import { today, diffDays, fmtDate, priorityColor } from "../utils/dateHelpers";
- 
-function PlannerScreen({
+
+const STUDENT_NAME_AARNI_HANDOO = "AARNI HANDOO";
+const REG_NO_24BCT0256 = "24BCT0256";
+
+function PlannerScreenAarniHandoo24BCT0256({
   project, tasks, members, pct, deadlinePct,
   projectCode,
   onToggleComplete, onDelete, onShift, onAddTask, onEditTask,
-  onRecommend, onReset, onDeleteProject,   // ←←← ADD THIS
+  onRecommend, onReset, onDeleteProject,
+  onUpdateNotes,
   loading
 }) {
-  const [filter,    setFilter]   = useState("ALL");
-  const [sortMode,  setSortMode] = useState("start");
-  const [notes,     setNotes]    = useState(project.notes || "");
+  const [filter, setFilter] = useState("ALL");
+  const [sortMode, setSortMode] = useState("start");
   const [codeCopied, setCodeCopied] = useState(false);
   const todayStr = today();
- 
+
   const copyCode = () => {
     navigator.clipboard.writeText(projectCode).then(() => {
       setCodeCopied(true);
       setTimeout(() => setCodeCopied(false), 2000);
     });
   };
- 
+
   const sorted = [...tasks].sort((a, b) => {
-    if (sortMode === "start")    return new Date(a.startDate) - new Date(b.startDate);
-    if (sortMode === "due")      return new Date(a.dueDate)   - new Date(b.dueDate);
+    if (sortMode === "start") return new Date(a.startDate) - new Date(b.startDate);
+    if (sortMode === "due") return new Date(a.dueDate) - new Date(b.dueDate);
     if (sortMode === "duration") return b.durationDays - a.durationDays;
     return 0;
   });
- 
+
   const filtered = sorted.filter(t => {
-    if (filter === "ALL")     return true;
-    if (filter === "HIGH")    return t.priority === "HIGH";
-    if (filter === "MEDIUM")  return t.priority === "MEDIUM";
-    if (filter === "LOW")     return t.priority === "LOW";
+    if (filter === "ALL") return true;
+    if (filter === "HIGH") return t.priority === "HIGH";
+    if (filter === "MEDIUM") return t.priority === "MEDIUM";
+    if (filter === "LOW") return t.priority === "LOW";
     if (filter === "PENDING") return !t.completed;
-    if (filter === "DONE")    return t.completed;
+    if (filter === "DONE") return t.completed;
     return true;
   });
- 
+
   const upcoming = sorted.filter(t => !t.completed).slice(0, 3);
-  const overdue  = tasks.filter(t => !t.completed && t.dueDate < todayStr).length;
- 
+  const overdue = tasks.filter(t => !t.completed && t.dueDate < todayStr).length;
+
   return (
     <div style={S.plannerWrap}>
- 
-      {/* ── Header ── */}
       <div style={S.plannerHeader}>
         <div>
           <div style={S.logoRow}>
@@ -59,9 +60,8 @@ function PlannerScreen({
             {fmtDate(project.startDate)} → <strong>{fmtDate(project.deadline)}</strong>
           </p>
         </div>
- 
+
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 10 }}>
-          {/* Project code badge */}
           {projectCode && (
             <div style={S.codeBadge} onClick={copyCode} title="Click to copy" className="code-badge">
               <span style={S.codeIcon}>🔗</span>
@@ -74,8 +74,6 @@ function PlannerScreen({
             <button style={S.resetBtn} onClick={onReset} className="pp-ghost-btn">
               ← New Project
             </button>
-
-            {/* ←←← NEW DELETE BUTTON */}
             <button
               onClick={onDeleteProject}
               style={{
@@ -96,14 +94,13 @@ function PlannerScreen({
           </div>
         </div>
       </div>
- 
-      {/* ── Stats ── */}
+
       <div style={S.statsRow}>
         {[
-          { icon: "📋", label: "Total Tasks",    value: tasks.length },
-          { icon: "✅", label: "Completed",      value: tasks.filter(t => t.completed).length },
-          { icon: "🔴", label: "High Priority",  value: tasks.filter(t => t.priority === "HIGH" && !t.completed).length },
-          { icon: "⏰", label: "Overdue",        value: overdue },
+          { icon: "📋", label: "Total Tasks", value: tasks.length },
+          { icon: "✅", label: "Completed", value: tasks.filter(t => t.completed).length },
+          { icon: "🔴", label: "High Priority", value: tasks.filter(t => t.priority === "HIGH" && !t.completed).length },
+          { icon: "⏰", label: "Overdue", value: overdue },
         ].map((s, i) => (
           <div
             key={i}
@@ -116,31 +113,28 @@ function PlannerScreen({
           </div>
         ))}
       </div>
- 
-      {/* ── Progress ── */}
+
       <div style={S.progressSection}>
-        <ProgressBar label="Overall Completion" pct={pct} color="#6366f1" />
-        <ProgressBar
+        <ProgressBarAarniHandoo24BCT0256 label="Overall Completion" pct={pct} color="#6366f1" />
+        <ProgressBarAarniHandoo24BCT0256
           label="On-Time Completion Rate"
           pct={deadlinePct}
           color={deadlinePct >= 80 ? "#10b981" : deadlinePct >= 50 ? "#f9c873" : "#ef4444"}
         />
       </div>
- 
-      {/* ── Notes ── */}
+
       <div style={S.notesBox}>
-        <div style={S.boxTitle}>📝 Project Notes</div>
+        <div style={S.boxTitle}>📝 Project Notes / Reviews</div>
         <textarea
           style={S.textarea}
           rows={3}
           placeholder="Add notes, review links, client feedback…"
-          value={notes}
-          onChange={e => setNotes(e.target.value)}
+          value={project.notes || ""}
+          onChange={e => onUpdateNotes(e.target.value)}
           className="pp-input"
         />
       </div>
- 
-      {/* ── Upcoming deadlines ── */}
+
       {upcoming.length > 0 && (
         <div style={S.remindersBox}>
           <div style={S.boxTitle}>⏰ Upcoming Deadlines</div>
@@ -158,8 +152,7 @@ function PlannerScreen({
           })}
         </div>
       )}
- 
-      {/* ── Sort + Action controls ── */}
+
       <div style={S.controlsRow}>
         <div style={S.sortGroup}>
           {[["start", "📅 Start Date"], ["due", "📅 Due Date"], ["duration", "⏱ Duration"]].map(([m, label]) => (
@@ -174,14 +167,13 @@ function PlannerScreen({
           ))}
         </div>
         <div style={S.actionGroup}>
-          <button style={S.addTaskBtn}  onClick={onAddTask}    className="pp-action-btn">+ Add Task</button>
-          <button style={S.suggestBtn}  onClick={onRecommend}  disabled={loading} className="pp-suggest-btn">
+          <button style={S.addTaskBtn} onClick={onAddTask} className="pp-action-btn">+ Add Task</button>
+          <button style={S.suggestBtn} onClick={onRecommend} disabled={loading} className="pp-suggest-btn">
             {loading ? "⏳ Generating…" : "✦ Suggest Tasks"}
           </button>
         </div>
       </div>
- 
-      {/* ── Filter bar ── */}
+
       <div style={S.filterBar}>
         {["ALL", "HIGH", "MEDIUM", "LOW", "PENDING", "DONE"].map(f => (
           <button
@@ -190,18 +182,17 @@ function PlannerScreen({
             onClick={() => setFilter(f)}
             className="pp-filter-btn"
           >
-            {f === "HIGH"   && <span style={{ color: "#ef4444" }}>● </span>}
+            {f === "HIGH" && <span style={{ color: "#ef4444" }}>● </span>}
             {f === "MEDIUM" && <span style={{ color: "#f9c873" }}>● </span>}
-            {f === "LOW"    && <span style={{ color: "#10b981" }}>● </span>}
+            {f === "LOW" && <span style={{ color: "#10b981" }}>● </span>}
             {f}
           </button>
         ))}
       </div>
- 
-      {/* ── Task list ── */}
+
       <div style={S.taskList}>
         {filtered.map(t => (
-          <TaskCard
+          <TaskCardAarniHandoo24BCT0256
             key={t.id} task={t} todayStr={todayStr}
             onToggleComplete={onToggleComplete}
             onDelete={onDelete}
@@ -222,5 +213,5 @@ function PlannerScreen({
     </div>
   );
 }
- 
-export default PlannerScreen;
+
+export default PlannerScreenAarniHandoo24BCT0256;

@@ -2,7 +2,10 @@ import { S } from "../styles";
 import { useState } from "react";
 import { today, fmtDate } from "../utils/dateHelpers";
 
-function ShiftModal({ task, onConfirm, onClose }) {
+const STUDENT_NAME_AARNI_HANDOO = "AARNI HANDOO";
+const REG_NO_24BCT0256 = "24BCT0256";
+
+function ShiftModalAarniHandoo24BCT0256({ task, onConfirm, onClose }) {
   const [date, setDate] = useState(task?.dueDate || today());
   return (
     <div style={S.overlay}>
@@ -23,4 +26,4 @@ function ShiftModal({ task, onConfirm, onClose }) {
   );
 }
 
-export default ShiftModal;
+export default ShiftModalAarniHandoo24BCT0256;

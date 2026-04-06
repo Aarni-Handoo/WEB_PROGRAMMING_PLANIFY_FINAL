@@ -1,6 +1,9 @@
 import { S } from "../styles";
 
-function ProgressBar({ label, pct, color }) {
+const STUDENT_NAME_AARNI_HANDOO = "AARNI HANDOO";
+const REG_NO_24BCT0256 = "24BCT0256";
+
+function ProgressBarAarniHandoo24BCT0256({ label, pct, color }) {
   return (
     <div style={S.progressWrap}>
       <div style={S.progressLabelRow}>
@@ -14,4 +17,4 @@ function ProgressBar({ label, pct, color }) {
   );
 }
 
-export default ProgressBar;
+export default ProgressBarAarniHandoo24BCT0256;
